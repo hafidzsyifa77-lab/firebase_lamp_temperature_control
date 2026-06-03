@@ -15,7 +15,7 @@
 #include "dht11_firebase.h"
 
 #define DHT_GPIO GPIO_NUM_4
-#define BASE_URL "https://smart-home-2-6a363-default-rtdb.firebaseio.com"
+#define BASE_URL "YOUR_FIREBASE_RTDB_URL"
 
 static const char *TAG = "DHT_FIREBASE";
 
@@ -36,9 +36,9 @@ void dht11_send(const char *json_string){
 
     esp_err_t err = esp_http_client_perform(client);
     if (err == ESP_OK) {
-        ESP_LOGI(TAG, "Berhasil PATCH data: %s", json_string);
+        ESP_LOGI(TAG, "Successfully PATCH data: %s", json_string);
     } else {
-        ESP_LOGE(TAG, "Gagal PATCH: %s", esp_err_to_name(err));
+        ESP_LOGE(TAG, "Failed PATCH: %s", esp_err_to_name(err));
     }
     esp_http_client_cleanup(client);
 }

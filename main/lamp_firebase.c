@@ -14,7 +14,6 @@
 #include "esp_http_client.h"
 #include "lamp_firebase.h"
 
-// Kita definisikan dua PIN GPIO untuk masing-masing lampu
 #define LAMP_1_GPIO GPIO_NUM_5
 #define LAMP_2_GPIO GPIO_NUM_18  // <== Ganti dengan pin cadanganmu (misal GPIO 18)
 
@@ -41,7 +40,6 @@ static esp_err_t http_event_handler(esp_http_client_event_t *evt) {
     return ESP_OK;
 }
 
-// Fungsi ini sekarang murni mengambil teks JSON dari Firebase
 void fetch_json_from_firebase(const char *path) {
     char url[128];
     snprintf(url, sizeof(url), "%s%s", BASE_URL, path);
@@ -65,30 +63,26 @@ void fetch_json_from_firebase(const char *path) {
     esp_http_client_cleanup(client);
 }
 
-// Fungsi Otak untuk mengecek dan mengatur kedua lampu sekaligus
 void check_and_set_lamp(void) {
-    // 1. Atur kedua PIN sebagai OUTPUT
+
     gpio_set_direction(LAMP_1_GPIO, GPIO_MODE_OUTPUT);
     gpio_set_direction(LAMP_2_GPIO, GPIO_MODE_OUTPUT);
 	
-    // 2. Ambil data satu folder /lamp.json (isinya: {"lamp1":x,"lamp2":y})
+   
     fetch_json_from_firebase("/lamp.json");
 	
     if (total_panjang_data > 0) {
         int status_lamp1 = 0;
         int status_lamp2 = 0;
 
-        // 3. Cek Status Lampu 1
         if (strstr(respon_buffer, "\"lamp1\":1") != NULL) {
             status_lamp1 = 1;
         }
         
-        // 4. Cek Status Lampu 2
         if (strstr(respon_buffer, "\"lamp2\":1") != NULL) {
             status_lamp2 = 1;
         }
 
-        // 5. Eksekusi setrum ke masing-masing LED fisik
         gpio_set_level(LAMP_1_GPIO, status_lamp1);
         gpio_set_level(LAMP_2_GPIO, status_lamp2);
 		

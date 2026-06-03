@@ -17,8 +17,8 @@
 #include "lwip/sys.h"
 #include "wifi_connection.h"
 
-#define WIFI_SSID      "i8Y4K342."
-#define WIFI_PASS      "j9Z5L453."
+#define WIFI_SSID      "YOUR_SSID"
+#define WIFI_PASS      "YOUR_PASSWORD"
 
 static EventGroupHandle_t s_wifi_event_group;
 #define WIFI_CONNECTED_BIT BIT0
