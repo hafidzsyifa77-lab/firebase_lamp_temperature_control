@@ -22,11 +22,11 @@ void lamp_control(void *pvParameters){
 }
 
 void sensor_control(void *pvParameters){
-	ESP_LOGI("MAIN", "Tarting Sensor Task....");
+	ESP_LOGI("MAIN", "Starting Sensor Task....");
 	
 	while (1) {
 		dht11_read_and_send();
-		vTaskDelay(pdMS_TO_TICKS(5000));
+		vTaskDelay(pdMS_TO_TICKS(180000));
 	}
 	vTaskDelete(NULL);
 }

@@ -15,22 +15,22 @@
 #include "lamp_firebase.h"
 
 #define LAMP_1_GPIO GPIO_NUM_5
-#define LAMP_2_GPIO GPIO_NUM_18  // <== Ganti dengan pin cadanganmu (misal GPIO 18)
+#define LAMP_2_GPIO GPIO_NUM_18  
 
-#define BASE_URL "https://smart-home-2-6a363-default-rtdb.firebaseio.com"
+#define BASE_URL "YOUR_FIREBASE_RTDB_URL"
 
 static const char *TAG = "LAMP_MODULE";
 static char respon_buffer[128] = {0};
-static int total_panjang_data = 0;
+static int total_length_of_data = 0;
 
 static esp_err_t http_event_handler(esp_http_client_event_t *evt) {
     switch(evt->event_id) {
         case HTTP_EVENT_ON_DATA:
             if (!esp_http_client_is_chunked_response(evt->client)) {
-                if (total_panjang_data + evt->data_len < sizeof(respon_buffer) - 1) {
-                    memcpy(respon_buffer + total_panjang_data, evt->data, evt->data_len);
-                    total_panjang_data += evt->data_len;
-                    respon_buffer[total_panjang_data] = '\0';
+                if (total_length_of_data + evt->data_len < sizeof(respon_buffer) - 1) {
+                    memcpy(respon_buffer + total_length_of_data, evt->data, evt->data_len);
+                    total_length_of_data += evt->data_len;
+                    respon_buffer[total_length_of_data] = '\0';
                 }
             }
             break;
@@ -45,7 +45,7 @@ void fetch_json_from_firebase(const char *path) {
     snprintf(url, sizeof(url), "%s%s", BASE_URL, path);
 	 
     memset(respon_buffer, 0, sizeof(respon_buffer));
-    total_panjang_data = 0;
+    total_length_of_data = 0;
 	
     esp_http_client_config_t config = {
         .url = url,
@@ -71,7 +71,7 @@ void check_and_set_lamp(void) {
    
     fetch_json_from_firebase("/lamp.json");
 	
-    if (total_panjang_data > 0) {
+    if (total_length_of_data > 0) {
         int status_lamp1 = 0;
         int status_lamp2 = 0;
 
@@ -86,7 +86,7 @@ void check_and_set_lamp(void) {
         gpio_set_level(LAMP_1_GPIO, status_lamp1);
         gpio_set_level(LAMP_2_GPIO, status_lamp2);
 		
-        ESP_LOGI(TAG, "Status Saklar -> LED 1: %s | LED 2: %s", 
+        ESP_LOGI(TAG, "Switch Status -> LED 1: %s | LED 2: %s", 
                  status_lamp1 ? "ON" : "OFF", status_lamp2 ? "ON" : "OFF");
     }
 }

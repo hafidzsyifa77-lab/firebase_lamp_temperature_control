@@ -28,7 +28,7 @@ Processing 3 dependencies:
 -- Found Threads: TRUE  
 -- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
 -- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
--- App "firebase_lamp_temperature_contr" version: f862a36-dirty
+-- App "firebase_lamp_temperature_contr" version: b976372-dirty
 -- Adding linker script D:/ESP-PROJECT/workspace/firebase_lamp_temperature_control/build/esp-idf/esp_system/ld/memory.ld
 -- Adding linker script D:/ESP-PROJECT/workspace/firebase_lamp_temperature_control/build/esp-idf/esp_system/ld/sections.ld.in
 -- Adding linker script C:/Espressif/frameworks/esp-idf-v5.3.1/components/esp_rom/esp32/ld/esp32.rom.ld

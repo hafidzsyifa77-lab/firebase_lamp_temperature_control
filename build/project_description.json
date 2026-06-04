@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "firebase_lamp_temperature_control",
-    "project_version":    "f862a36-dirty",
+    "project_version":    "b976372-dirty",
     "project_path":       "D:/ESP-PROJECT/workspace/firebase_lamp_temperature_control",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.3.1",
     "build_dir":          "D:/ESP-PROJECT/workspace/firebase_lamp_temperature_control/build",

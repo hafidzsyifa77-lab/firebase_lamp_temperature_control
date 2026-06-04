@@ -47,7 +47,6 @@ void dht11_read_and_send(void) {
 float temperature = 0;
     float humidity = 0;
 
-    // Baca data dari sensor fisik DHT11 kamu
     if (dht_read_float_data(DHT_TYPE_DHT11, DHT_GPIO, &humidity, &temperature) == ESP_OK) {
         
         static float last_temperature = -999.0;
