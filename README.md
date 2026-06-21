@@ -39,3 +39,9 @@ The project strictly follows a modular architecture, segregating low-level drive
 │   ├── dht11_firebase.c / .h   # Telemetry Mod (DHT11 driver & dynamic PATCH payload builder)
 │   └── lamp_firebase.c / .h    # Actuator Mod (HTTP Event Handler & physical GPIO switching)
 └── CMakeLists.txt              # Project Build Configuration
+
+## Getting Started
+1. Ensure your ESP-IDF environment is properly configured.
+2. Clone this repository:
+   ```bash
+   git clone https://github.com/hafidzsyifa77-lab/firebase_lamp_temperature_control/tree/main
