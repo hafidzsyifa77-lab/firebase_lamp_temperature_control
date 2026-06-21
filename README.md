@@ -36,4 +36,4 @@ The project strictly follows a modular architecture, segregating low-level drive
 1. Ensure your ESP-IDF environment is properly configured.
 2. Clone this repository:
    ```bash
-   git clone https://github.com/hafidzsyifa77-lab/firebase_lamp_temperature_control/tree/main
+   git clone https://github.com/hafidzsyifa77-lab/firebase_lamp_temperature_control
