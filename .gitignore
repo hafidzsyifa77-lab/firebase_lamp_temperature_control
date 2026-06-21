@@ -1,0 +1,13 @@
+﻿# Build results
+build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# Config files
+sdkconfig
+sdkconfig.defaults
+
+# VS Code settings
+.vscode/
