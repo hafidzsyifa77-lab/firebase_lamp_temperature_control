@@ -32,14 +32,6 @@ Firmware Directory Structure
 
 The project strictly follows a modular architecture, segregating low-level drivers and application logic to ensure clean, high-maintainability code:
 
-```text
-├── main/
-│   ├── main.c                  # Core Scheduler (Task initialization & prioritization)
-│   ├── wifi_smart.c / .h       # Network Layer (WiFi Station Mode configuration)
-│   ├── dht11_firebase.c / .h   # Telemetry Mod (DHT11 driver & dynamic PATCH payload builder)
-│   └── lamp_firebase.c / .h    # Actuator Mod (HTTP Event Handler & physical GPIO switching)
-└── CMakeLists.txt              # Project Build Configuration
-
 ## Getting Started
 1. Ensure your ESP-IDF environment is properly configured.
 2. Clone this repository:
